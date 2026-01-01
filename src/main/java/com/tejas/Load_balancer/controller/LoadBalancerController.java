@@ -23,7 +23,7 @@ public class LoadBalancerController {
     private final LoadBalancerService loadBalancerService;
     private final RestTemplate restTemplate;
     private final Logger logger = Logger.getLogger(LoadBalancerController.class.getName());
-    @RequestMapping(value = "/balance/**", method = RequestMethod.GET)
+    @RequestMapping(value = "/balance/**")
     public ResponseEntity<?> handleRequest(HttpServletRequest request,
                                            @RequestBody(required = false) String body) throws RestClientException {
         WorkerNode worker = loadBalancerService.getNextWorkerNode();
@@ -50,7 +50,6 @@ public class LoadBalancerController {
                 requestEntity,
                 String.class
         );
-        logger.info("mapped request to "+worker.getUrl());
         return ResponseEntity.status(response.getStatusCode())
                 .headers(response.getHeaders())
                 .body(response.getBody());
