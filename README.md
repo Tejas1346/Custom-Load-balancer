@@ -50,6 +50,11 @@ A simple load balancer implemented with a round-robin strategy. The controller d
     - With Maven: `mvn spring-boot:run`
     - Or run the generated jar: `java -jar target/your-app.jar`
 
+## Environment Variables
+
+To run this project on a seperate port go to application.properties and server.port
+
+`server.port= <Your Port>`
 
 ## Example Usage
 
@@ -72,3 +77,5 @@ curl -X POST http://localhost:8080/balance/api/users \
   -d '{"name": "John Doe", "email": "john@example.com"}'
 ```
 - Here the request will be rerouted to /api/users of the workers
+
+
